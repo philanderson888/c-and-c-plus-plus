@@ -15,6 +15,7 @@ Learning c and c++
   - [printing](#printing)
   - [c plus plus](#c-plus-plus)
   - [c++ types](#c-types)
+  - [graphics](#graphics)
 
 
 ## compiling c
@@ -117,3 +118,53 @@ counter tick_c = 100;
 enum color = {red, green, blue} myColor;
 myColor = green;
 ```
+
+## graphics 
+
+to get graphics going with c++ on a mac we can do the following
+
+- download xcod
+- download sfml simple and fast multimedia library
+
+```bash
+brew install sfml
+```
+
+draw a box
+
+```cpp
+#include <SFML/Graphics.hpp>
+
+int main() {
+    // Create a window
+    sf::RenderWindow window(sf::VideoMode(800, 600), "Draw a Box");
+
+    // Create a rectangle (box)
+    sf::RectangleShape box(sf::Vector2f(100.f, 100.f));
+    box.setFillColor(sf::Color::Green);  // Set color to green
+    box.setPosition(350.f, 250.f);  // Position the box in the middle of the window
+
+    // Main loop
+    while (window.isOpen()) {
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+
+        // Clear the window with a black color
+        window.clear(sf::Color::Black);
+
+        // Draw the box
+        window.draw(box);
+
+        // Display the content of the window
+        window.display();
+    }
+
+    return 0;
+}
+```
+
+
+

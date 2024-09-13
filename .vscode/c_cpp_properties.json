@@ -3,13 +3,13 @@
         {
             "name": "macos-clang-arm64",
             "includePath": [
-                "${workspaceFolder}/**",
-                " /usr/local/include",
-                " /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1",
-                " /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include",
-                " /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include",
-                " /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
-                " /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks (framework directory)"
+                "/usr/local/include",
+                "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1",
+                "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include",
+                "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include",
+                "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
+                "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks",
+                "${workspaceFolder}/**"
             ],
             "compilerPath": "/usr/bin/clang",
             "cStandard": "${default}",
