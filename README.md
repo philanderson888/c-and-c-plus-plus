@@ -13,6 +13,8 @@ Learning c and c++
   - [data types](#data-types)
   - [arrays](#arrays)
   - [printing](#printing)
+  - [c plus plus](#c-plus-plus)
+  - [c++ types](#c-types)
 
 
 ## compiling c
@@ -79,4 +81,39 @@ int number01 = 120
 printf("numbers are printed with percent s variable symbol eg %s", number01)
 char * string01 = "this is a string"
 printf("strings are printed with percent d variable symbol eg %d", string01)
+```
+
+## c plus plus
+
+## c++ types
+
+- boolean
+- char
+- short int 16 bits
+- int 32 bits
+- long int 64 bits
+- float 32 bits
+- double 64 bits
+- void
+- wchar_t wide character
+
+- signed
+- unsigned short
+- unsigned long
+
+- struct
+- class
+
+- typedef creates an alias
+
+```cpp
+typedef int counter;
+counter tick_c = 100;
+```
+
+- enum
+
+```cpp
+enum color = {red, green, blue} myColor;
+myColor = green;
 ```
