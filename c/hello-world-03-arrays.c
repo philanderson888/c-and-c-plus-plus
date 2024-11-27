@@ -1,5 +1,3 @@
-// first array
-
 #include <stdio.h>
 
 int main() {
