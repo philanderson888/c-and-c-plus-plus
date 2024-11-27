@@ -56,6 +56,23 @@ int main() {
     cout << "stringType: " << stringType << endl;
     cout << "boolType: " << boolType << endl;
 
+
+    printf("=============================================================================================\n");
+    printf("                                 Data Conversion                                             \n");
+    printf("=============================================================================================\n");
+
+    printf("\nstring to integer conversion\n");
+    string numberAsString = "2021";
+    int numberFromString = stoi(numberAsString);
+    cout << "The integer value of the string" << numberAsString << " is " << numberFromString << endl;
+
+
+    printf("\ninteger to string conversion\n");
+    int numberToConvert = 2021;
+    string numberToString = to_string(numberToConvert);
+    cout << "The string value of the integer " << numberToConvert << " is " << numberToString << endl;
+    
+
     printf("=============================================================================================\n");
     printf("                                      Operators                                              \n");
     printf("=============================================================================================\n");
