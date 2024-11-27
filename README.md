@@ -8,6 +8,7 @@ Learning c and c++
   - [contents](#contents)
   - [compiling c](#compiling-c)
   - [compiling c++](#compiling-c-1)
+  - [running c++](#running-c)
   - [references](#references)
   - [hello-world](#hello-world)
   - [data types](#data-types)
@@ -37,6 +38,13 @@ similarly can use
 cc hello-world.cpp -o hello-world
 g++ hello-world.cpp -o hello-world
 clang++ hello-world.cpp -o hello-world
+```
+
+## running c++
+
+```bash
+./hello-world
+# Hello, World!
 ```
 
 ## references
