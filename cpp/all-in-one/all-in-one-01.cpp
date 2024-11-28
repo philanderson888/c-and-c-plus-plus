@@ -93,6 +93,47 @@ int main() {
     z = x % y;
     cout << "modulus operator - x % y = " << z << endl;
 
+    z = x++;
+    cout << "post-increment - z = x++ = " << z << endl;
+
+    z = x--;
+    cout << "post-decrement - z = x-- = " << z << endl;
+
+    z = ++x;
+    cout << "pre-increment - z = ++x = " << z << endl;
+
+    z = --x;
+    cout << "pre-decrement - z = --x = " << z << endl;
+
+    x = 5;
+    y = 3;
+    cout << "x = " << x << endl;
+    cout << "y = " << y << endl;
+    cout << "x == y is " << (x == y) << endl;
+    cout << "x != y is " << (x != y) << endl;
+
+    cout << "x > y is " << (x > y) << endl;
+    cout << "x < y is " << (x < y) << endl;
+    cout << "x >= y is " << (x >= y) << endl;
+    cout << "x <= y is " << (x <= y) << endl;
+
+    cout << "Logical Operators" << endl;
+    cout << "x && y is " << (x && y) << endl;
+    cout << "x || y is " << (x || y) << endl;
+    cout << "!x is " << (!x) << endl;
+
+    x = 5;
+    y = 3;
+    cout << "Bitwise Operators" << endl;
+    cout << "x & y is " << (x & y) << endl;
+    cout << "x | y is " << (x | y) << endl;
+    cout << "x ^ y is " << (x ^ y) << endl;
+    cout << "~x is " << (~x) << endl;
+    cout << "x << 1 is " << (x << 1) << endl;
+    cout << "x >> 1 is " << (x >> 1) << endl;
+    
+
+
     printf("=============================================================================================\n");
     printf("                                      Loops                                                  \n");
     printf("=============================================================================================\n");

@@ -358,6 +358,36 @@ void findNumberOfFruitsWhichFallOnYourHouse(int s, int t, int a, int b, vector<i
     
 }
 
+vector<int> comparePoints(vector<int> pointsA, vector<int> pointsB) {
+    int scoreA = 0;
+    int scoreB = 0;
+    int pointsLength = pointsA.size();
+
+    for (int i = 0; i < pointsLength; i++) {
+        if (pointsA[i] > pointsB[i]) {
+            scoreA++;
+        } else if (pointsA[i] < pointsB[i]) {
+            scoreB++;
+        }
+    }
+
+    int scores[] = {scoreA, scoreB};
+    vector<int> scoresVector(scores, scores + sizeof(scores) / sizeof(scores[0]));
+
+    cout << scoreA << " " << scoreB << endl;
+
+    if (scoreA > scoreB) {
+        cout << "A wins!" << endl;
+    } else if (scoreA < scoreB) {
+        cout << "B wins!" << endl;
+    } else {
+        cout << "It's a tie!" << endl;
+    }
+
+    return scoresVector;
+}
+
+
 string reduceByPowersOf2(int initialGameValue) {
 
     // given initial number n, reduce it by subtracting the largest power of 2 less than n
@@ -373,18 +403,36 @@ string reduceByPowersOf2(int initialGameValue) {
     int gamePlayValue = initialGameValue;
     string winner = "";
 
+    cout << "using the & (bitwise and) operator is a fancy way of checking if a number is a power of 2 or not" << endl;
+    cout << "132 & 131 is " << (132 & 131) << " yields 128" << endl;
+    cout << "131 & 130 is " << (131 & 130) << " yields 128" << endl;
+    cout << "130 & 129 is " << (130 & 129) << " yields 128" << endl;
+    cout << "129 & 128 is " << (129 & 128) << " yields 128" << endl; 
+    cout << "128 & 127 is " << (128 & 127) << " yields 0" << endl;
+    cout << " " << endl;
+
     while (gamePlayValue > 1) {
+
+        moves++;
+        cout << "\nmove " << moves << endl;        
+        cout << "game play value this turn starts " << gamePlayValue << endl;
+        // cout << "game play value - 1 is " << (gamePlayValue - 1) << endl;
+        // cout << "game play value & (game play value - 1) is " << (gamePlayValue & (gamePlayValue - 1)) << endl;
         if ((gamePlayValue & (gamePlayValue - 1)) == 0) {
             gamePlayValue = gamePlayValue / 2;
+            cout << "dividing by 2 so game play value this turn ends " << gamePlayValue << endl;
         } else {
             int largestPowerOf2 = 1;
             while (largestPowerOf2 * 2 < gamePlayValue) {
                 largestPowerOf2 *= 2;
             }
             gamePlayValue -= largestPowerOf2;
+            cout << "subtracting largest power of 2 " << largestPowerOf2 << " so game play value this turn ends " << gamePlayValue << endl;
         }
-        moves++;
     }
+
+    cout << "\nfinal move is " << moves << endl;        
+    cout << "final game play value is " << gamePlayValue << endl;
 
     if (moves % 2 == 0) {
         winner = "Richard";
@@ -397,7 +445,135 @@ string reduceByPowersOf2(int initialGameValue) {
     return winner;
 }
 
+string circusShow(int initialPositionAnimal1, int speedAnimal1, int initialPositionAnimal2, int speedAnimal2) {
 
+    /*
+
+    circus show
+    two kangaroos have initial position x and speed of each jump v so input data is [x1, v1] and [x2, v2]
+    initial position time t = 0 the are at [x1, x2]
+    after time t they are at [x1 + v1*t, x2 + v2*t]
+    we have to determine if at any point on the journey they are at the same position ie x1 + v1*t = x2 + v2*t for some t
+
+    so mathematically x1 + v1*t = x2 + v2*t 
+    separate out t and we get t = (x2 - x1) / (v1 - v2) has to be an integer
+
+    */
+
+    string result = "NO";
+
+    int x1 = initialPositionAnimal1;
+    int v1 = speedAnimal1;
+    int x2 = initialPositionAnimal2;
+    int v2 = speedAnimal2;
+
+    cout << "initial position of animal 1 is " << x1 << " and speed is " << v1 << endl;
+    cout << "initial position of animal 2 is " << x2 << " and speed is " << v2 << endl;
+
+    cout << "\nnow determine if they meet ..." << endl;
+
+    bool willMeet = false;
+    int willMeetTime = -1;
+    int willMeetPosition = -1;
+
+    if (v1 == v2) {
+        if (x1 == x2) {
+            cout << "they are at the same position so they will meet" << endl;
+            willMeet = true;
+            willMeetTime = 0;
+        } else {
+            cout << "they are moving at the same speed so they will never meet" << endl;
+        }
+    } else {
+        willMeetTime = (x2 - x1) / (v1 - v2);
+        bool willMeetAtAPerfectIntegerPosition = (x2 - x1) % (v1 - v2) == 0;
+        if (willMeetTime >= 0 && willMeetAtAPerfectIntegerPosition) {
+            willMeet = true;
+        }
+    }
+
+    if (willMeet) {
+        result = "YES";
+        willMeetPosition = x1 + v1 * willMeetTime;
+        cout << "they will meet at position " << willMeetPosition << " at time " << willMeetTime << endl;
+    } else {
+        cout << "they will never meet" << endl;
+    }
+
+    cout << "result is " << result << endl;
+
+    return result;
+
+}
+
+int findFactors(vector<int> factorArray1, vector<int> factorArray2) {
+
+    /*
+    given two arrays
+    a) the elements of the first array are all factors of the integer n
+    b) the integer n is a factor of all elements of the second array
+    */
+
+    vector<int> a = factorArray1;
+    vector<int> b = factorArray2;
+
+    cout << "factor array 1 is ";
+    for (int i = 0; i < a.size(); i++) {
+        cout << a[i] << " ";
+    }
+    
+    cout << "\nfactor array 2 is ";
+    for (int i = 0; i < b.size(); i++) {
+        cout << b[i] << " ";
+    }
+
+    cout << "\nfind factors meeting conditions ... " << endl;
+
+    vector<int> factors;
+
+    int maxA = *max_element(a.begin(), a.end());
+    int minB = *min_element(b.begin(), b.end());
+
+    cout << "max of a is " << maxA << endl;
+    cout << "min of b is " << minB << endl;
+
+    for (int i = maxA; i <= minB; i++) {
+        bool isFactor = true;
+        for (int j = 0; j < a.size(); j++) {
+            if (i % a[j] != 0) {
+                isFactor = false;
+                break;
+            }
+        }
+        if (isFactor) {
+            for (int j = 0; j < b.size(); j++) {
+                if (b[j] % i != 0) {
+                    isFactor = false;
+                    break;
+                }
+            }
+        }
+        if (isFactor) {
+            factors.push_back(i);
+        }
+    }
+
+    int factorsFound = factors.size();
+
+    if (factorsFound > 0) {
+        cout << factorsFound << " factors found ... ";
+        for (int i = 0; i < factorsFound; i++) {
+            cout << factors[i] << " ";
+        }
+    } else {
+        cout << "no factors found" << endl;
+    }
+
+    cout << endl;
+
+    return factorsFound;
+
+}
 
 int main() { 
 
@@ -529,6 +705,43 @@ int main() {
 
     int initialGameValue = 132;
     reduceByPowersOf2(initialGameValue);
+
+
+    printf("=============================================================================================\n");
+    printf("                             Compare Points Of Two Players                                   \n");
+    printf("=============================================================================================\n");
+    int pointsA[] = {5, 6, 7};
+    int pointsB[] = {3, 6, 10};
+    vector<int> pointsAsVectorA(pointsA, pointsA + sizeof(pointsA) / sizeof(pointsA[0]));
+    vector<int> pointsAsVectorB(pointsB, pointsB + sizeof(pointsB) / sizeof(pointsB[0]));
+    comparePoints(pointsAsVectorA, pointsAsVectorB);
+
+
+    printf("=============================================================================================\n");
+    printf("                                   Circus Show                                               \n");
+    printf("=============================================================================================\n");
+
+    int animal1[] = {0,3};
+    int animal2[] = {4,2};
+    circusShow(animal1[0], animal1[1], animal2[0], animal2[1]);
+
+
+
+    printf("=============================================================================================\n");
+    printf("                                      Find Factors                                           \n");
+    printf("=============================================================================================\n");
+
+    int factorArray1[] = {2, 6};
+    int factorArray2[] = {24, 36};
+    vector<int> factorArrayAsVector1(factorArray1, factorArray1 + sizeof(factorArray1) / sizeof(factorArray1[0]));
+    vector<int> factorArrayAsVector2(factorArray2, factorArray2 + sizeof(factorArray2) / sizeof(factorArray2[0]));
+    findFactors(factorArrayAsVector1, factorArrayAsVector2);
+
+    int factorArray3[] = {2, 4};
+    int factorArray4[] = {16, 32, 96};
+    vector<int> factorArrayAsVector3(factorArray3, factorArray3 + sizeof(factorArray3) / sizeof(factorArray3[0]));
+    vector<int> factorArrayAsVector4(factorArray4, factorArray4 + sizeof(factorArray4) / sizeof(factorArray4[0]));
+    findFactors(factorArrayAsVector3, factorArrayAsVector4);
 
     return 0;
 }
